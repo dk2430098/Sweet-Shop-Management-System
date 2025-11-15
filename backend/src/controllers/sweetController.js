@@ -62,6 +62,26 @@ exports.createSweet = async (req, res) => {
   }
 };
 
+exports.updateSweet = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updates = req.body;
+
+    const sweet = await Sweet.findByIdAndUpdate(id, updates, {
+      new: true,
+      runValidators: true,
+    });
+
+    if (!sweet) {
+      return res.status(404).json({ message: "Sweet not found" });
+    }
+
+    res.status(200).json(sweet);
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
+
 exports.purchaseSweet = async (req, res) => {
   try {
     const sweet = await Sweet.findById(req.params.id);

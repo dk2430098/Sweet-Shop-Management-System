@@ -3,6 +3,7 @@ const {
   createSweet,
   searchSweets,
   getAllSweets,
+  updateSweet,
   purchaseSweet,
 } = require("../controllers/sweetController");
 
@@ -13,6 +14,7 @@ const router = express.Router();
 router.get("/", getAllSweets);
 router.get("/search", searchSweets);
 router.post("/", authenticate, isAdmin, createSweet);
+router.put("/:id", authenticate, isAdmin, updateSweet);
 router.post("/:id/purchase", authenticate, purchaseSweet);
 
 module.exports = router;
