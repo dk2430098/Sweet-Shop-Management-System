@@ -82,6 +82,20 @@ exports.updateSweet = async (req, res) => {
   }
 };
 
+exports.deleteSweet = async (req, res) => {
+  try {
+    const sweet = await Sweet.findByIdAndDelete(req.params.id);
+
+    if (!sweet) {
+      return res.status(404).json({ message: "Sweet not found" });
+    }
+
+    return res.status(204).send();
+  } catch (error) {
+    return res.status(500).json({ message: "Server error" });
+  }
+};
+
 exports.purchaseSweet = async (req, res) => {
   try {
     const sweet = await Sweet.findById(req.params.id);

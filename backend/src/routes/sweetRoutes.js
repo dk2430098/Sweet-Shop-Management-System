@@ -4,6 +4,7 @@ const {
   searchSweets,
   getAllSweets,
   updateSweet,
+  deleteSweet,
   purchaseSweet,
 } = require("../controllers/sweetController");
 
@@ -15,6 +16,7 @@ router.get("/", getAllSweets);
 router.get("/search", searchSweets);
 router.post("/", authenticate, isAdmin, createSweet);
 router.put("/:id", authenticate, isAdmin, updateSweet);
+router.delete("/:id", authenticate, isAdmin, deleteSweet);
 router.post("/:id/purchase", authenticate, purchaseSweet);
 
 module.exports = router;
