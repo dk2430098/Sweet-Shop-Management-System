@@ -21,6 +21,8 @@ exports.register = async (req, res) => {
       username,
       email,
       password: hashedPassword,
+      role: "user",
+      isAdmin: false,
     });
 
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {

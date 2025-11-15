@@ -1,3 +1,4 @@
+require("dotenv").config({ path: ".env" });
 const request = require("supertest");
 const mongoose = require("mongoose");
 const app = require("../app.js");
@@ -9,12 +10,13 @@ const jwt = require("jsonwebtoken");
 let adminToken;
 
 beforeAll(async () => {
-  await mongoose.connect(process.env.MONGO_URI);
+  await mongoose.connect(process.env.MONGODB_URI);
 
   // Create admin user manually
   const passwordHash = await bcrypt.hash("adminpass", 10);
 
   const admin = await User.create({
+    username: "adminuser",
     name: "Admin",
     email: "admin@example.com",
     password: passwordHash,
@@ -36,7 +38,7 @@ afterAll(async () => {
 
 test("Admin can create a new sweet", async () => {
   const res = await request(app)
-    .post("/api/sweets")
+    .post("/api/sweets/")
     .set("Authorization", `Bearer ${adminToken}`)
     .send({
       name: "Ladoo",

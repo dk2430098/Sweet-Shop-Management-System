@@ -1,30 +1,33 @@
 const jwt = require("jsonwebtoken");
-const User = require("../models/User");
 
-const authenticate = async (req, res, next) => {
+const authenticate = (req, res, next) => {
+  const header = req.header("Authorization");
+
+  if (!header) {
+    return res.status(401).json({ msg: "No token provided" });
+  }
+
+  const token = header.replace("Bearer ", "");
+
   try {
-    const header = req.header("Authorization");
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    if (!header) {
-      return res.status(401).json({ msg: "No token provided" });
-    }
-
-    const token = header.replace("Bearer ", "");
-
-    let decoded;
-    try {
-      decoded = jwt.verify(token, process.env.JWT_SECRET);
-    } catch (e) {
-      return res.status(401).json({ msg: "Invalid token" });
-    }
-
-    const userId = decoded.id;
-    req.user = { id: userId };
+    req.user = {
+      id: decoded.id,
+      role: decoded.role,
+    };
 
     return next();
-  } catch (err) {
+  } catch (error) {
     return res.status(401).json({ msg: "Invalid token" });
   }
 };
 
-module.exports = { authenticate };
+const isAdmin = (req, res, next) => {
+  if (req.user.role !== "admin") {
+    return res.status(403).json({ msg: "Admin access required" });
+  }
+  next();
+};
+
+module.exports = { authenticate, isAdmin };

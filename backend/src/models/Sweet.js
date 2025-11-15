@@ -1,11 +1,38 @@
 const mongoose = require("mongoose");
 
-const sweetSchema = new mongoose.Schema({
-  name: { type: String, required: true, unique: true },
-  category: String,
-  price: { type: Number, required: true },
-  quantity: { type: Number, default: 0 },
-  description: String,
-});
+const sweetSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    category: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    price: {
+      type: Number,
+      required: true,
+      min: 0,
+    },
+    quantity: {
+      type: Number,
+      required: true,
+      min: 0,
+      default: 0,
+    },
+    description: {
+      type: String,
+      trim: true,
+    },
+    imageUrl: {
+      type: String,
+      default: "",
+    },
+  },
+  { timestamps: true }
+);
 
 module.exports = mongoose.model("Sweet", sweetSchema);
