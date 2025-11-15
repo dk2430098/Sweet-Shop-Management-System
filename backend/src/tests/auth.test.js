@@ -62,7 +62,7 @@ test("POST /login → should login user successfully", async () => {
   const bcrypt = require("bcryptjs");
   jest.spyOn(bcrypt, "compare").mockResolvedValue(true);
 
-  const res = await request(app).post("/login").send({
+  const res = await request(app).post("/api/auth/login").send({
     email: user.email,
     password: "password123",
   });
@@ -73,7 +73,7 @@ test("POST /login → should login user successfully", async () => {
 
 // Invalid login
 test("POST /login → should fail on invalid credentials", async () => {
-  const res = await request(app).post("/login").send({
+  const res = await request(app).post("/api/auth/login").send({
     email: "notfound@example.com",
     password: "wrong",
   });
