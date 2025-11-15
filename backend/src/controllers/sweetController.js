@@ -1,6 +1,15 @@
 const mongoose = require("mongoose");
 const Sweet = require("../models/Sweet");
 
+exports.getAllSweets = async (req, res) => {
+  try {
+    const sweets = await Sweet.find().sort({ createdAt: -1 });
+    res.json(sweets);
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
+
 exports.createSweet = async (req, res) => {
   try {
     const { name, category, price, quantity, description, imageUrl } = req.body;
@@ -20,7 +29,6 @@ exports.createSweet = async (req, res) => {
       imageUrl,
     });
 
-    // FIX: Return the sweet directly so test passes
     res.status(201).json(sweet);
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });
