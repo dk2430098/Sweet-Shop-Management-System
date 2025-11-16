@@ -21,24 +21,26 @@ exports.login = async (req, res) => {
     }
 
     const token = jwt.sign(
-      { userId: user._id, role: user.role },
+      { userId: user._id, role: user.role, isAdmin: user.isAdmin },
       process.env.JWT_SECRET,
-      {
-        expiresIn: "7d",
-      }
+      { expiresIn: "7d" }
     );
 
-    res.json({
+    return res.status(200).json({
       message: "Login successful",
       token,
       user: {
         id: user._id,
         username: user.username,
         email: user.email,
+        role: user.role,
         isAdmin: user.isAdmin,
       },
     });
   } catch (error) {
-    res.status(500).json({ message: "Server error", error: error.message });
+    return res.status(500).json({
+      message: "Server error",
+      error: error.message,
+    });
   }
 };
