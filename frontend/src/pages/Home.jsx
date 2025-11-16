@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { sweetsAPI } from "../services/api";
-import SweetCard from "../components/SweetCard";
-import Navbar from "../components/Navbar";
+import { sweetsAPI } from "../services/api.js";
+import SweetCard from "../components/SweetCard.jsx";
+import Navbar from "../components/Navbar.jsx";
 import { Search } from "lucide-react";
 
 export default function Home({ onNavigate }) {

@@ -1,4 +1,4 @@
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/AuthContext.jsx";
 import { LogOut, Candy, LayoutDashboard } from "lucide-react";
 
 export default function Navbar({ onNavigate, currentPage }) {

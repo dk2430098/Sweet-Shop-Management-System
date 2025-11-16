@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { sweetsAPI } from "../services/api";
-import SweetCard from "../components/SweetCard";
-import SweetForm from "../components/SweetForm";
-import Navbar from "../components/Navbar";
+import { sweetsAPI } from "../services/api.js";
+import SweetCard from "../components/SweetCard.jsx";
+import SweetForm from "../components/SweetForm.jsx";
+import Navbar from "../components/Navbar.jsx";
 import { PlusCircle, Edit, Trash2 } from "lucide-react";
 
 export default function AdminDashboard({ onNavigate }) {
