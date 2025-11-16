@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 beforeAll(async () => {
-  await mongoose.connect(process.env.MONGODB_URI);
+  await mongoose.connect(process.env.MONGO_URI);
 });
 
 afterAll(async () => {

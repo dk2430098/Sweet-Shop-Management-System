@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const Sweet = require("../models/Sweet.js");
 
 beforeAll(async () => {
-  await mongoose.connect(process.env.MONGODB_URI);
+  await mongoose.connect(process.env.MONGO_URI);
 
   await Sweet.deleteMany({});
 

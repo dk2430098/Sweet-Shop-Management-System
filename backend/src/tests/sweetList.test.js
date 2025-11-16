@@ -5,7 +5,7 @@ const app = require("../app.js");
 const Sweet = require("../models/Sweet.js");
 
 beforeAll(async () => {
-  await mongoose.connect(process.env.MONGODB_URI);
+  await mongoose.connect(process.env.MONGO_URI);
 });
 
 afterAll(async () => {

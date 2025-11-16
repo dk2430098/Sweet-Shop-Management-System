@@ -10,7 +10,7 @@ const jwt = require("jsonwebtoken");
 let adminToken;
 
 beforeAll(async () => {
-  await mongoose.connect(process.env.MONGODB_URI);
+  await mongoose.connect(process.env.MONGO_URI);
 
   // Create admin user manually
   const passwordHash = await bcrypt.hash("adminpass", 10);

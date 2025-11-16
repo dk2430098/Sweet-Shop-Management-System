@@ -8,7 +8,7 @@ const User = require("../models/User.js");
 const jwt = require("jsonwebtoken");
 
 beforeAll(async () => {
-  await mongoose.connect(process.env.MONGODB_URI);
+  await mongoose.connect(process.env.MONGO_URI);
 
   // Create dummy user
   const user = await User.create({

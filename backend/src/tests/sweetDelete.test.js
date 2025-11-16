@@ -8,7 +8,7 @@ const Sweet = require("../models/Sweet.js");
 const jwt = require("jsonwebtoken");
 
 beforeAll(async () => {
-  await mongoose.connect(process.env.MONGODB_URI);
+  await mongoose.connect(process.env.MONGO_URI);
 });
 
 afterAll(async () => {

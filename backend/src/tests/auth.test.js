@@ -5,7 +5,7 @@ const app = require("../app.js");
 const User = require("../models/User.js");
 
 beforeAll(async () => {
-  await mongoose.connect(process.env.MONGODB_URI);
+  await mongoose.connect(process.env.MONGO_URI);
 });
 
 beforeEach(async () => {
