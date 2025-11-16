@@ -22,7 +22,7 @@ export default function Navbar({ onNavigate, currentPage }) {
             <span className="text-sm">Hello, {user?.email}</span>
 
             {/* Admin Button */}
-            {user?.role === "admin" && (
+            {user?.isAdmin && (
               <button
                 onClick={() =>
                   onNavigate(currentPage === "admin" ? "home" : "admin")
