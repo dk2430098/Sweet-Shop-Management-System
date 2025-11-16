@@ -344,3 +344,47 @@ Using AI significantly improved my development workflow:
 AI acted as a supportive tool, not an auto-builder.**
 
 ---
+
+## ✅ Test Report (Summary)
+
+ **Jest + Supertest**.
+
+| Category                        | Tests   | Status   |
+| ------------------------------- | ------- | -------- |
+| Authentication (Register/Login) | 4 tests | ✅ Passed |
+| Sweets Search API               | 4 tests | ✅ Passed |
+| Sweet Purchase API              | 2 tests | ✅ Passed |
+| Sweet CRUD (Create/List/Delete) | 4 tests | ✅ Passed |
+| Auth Middleware                 | 2 tests | ✅ Passed |
+| Database Connectivity           | 1 test  | ✅ Passed |
+| Restock API                     | 2 tests | ❌ Failed |
+| Update Sweet API                | 1 test  | ❌ Failed |
+
+### ❗ Failed Tests
+
+* **Restock Sweet API**
+
+  * Missing required `username` and `password` in test user creation.
+* **Update Sweet API**
+
+  * Unauthorized access (401) instead of expected 200.
+
+### 📝 Test Command
+
+You can run the test suite using:
+
+```bash
+npm test
+```
+
+###  Full Test Report
+
+Full raw test output is available at:
+
+```
+backend/test-report.txt
+```
+
+---
+
+
