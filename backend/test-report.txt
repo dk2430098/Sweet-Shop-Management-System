@@ -1,104 +1,82 @@
+Deepakkumar@MacBookAir backend % npm test -- --verbose > test-report.txt
 
-> backend@1.0.0 test
-> jest --runInBand --verbose
+FAIL src/tests/restockSweet.test.js
+  ✕ Admin should restock a sweet successfully (1 ms)
+  ✕ Non-admin should not restock
 
-  console.log
-    [dotenv@17.2.3] injecting env (0) from .env.test -- tip: ⚙️  suppress all logs with { quiet: true }
+  ● Admin should restock a sweet successfully
 
-      at _log (node_modules/dotenv/lib/main.js:142:11)
+    ValidationError: User validation failed: password: Path `password` is required., username: Path `username` is required.
 
-  console.log
-    [dotenv@17.2.3] injecting env (4) from .env -- tip: 🛠️  run anywhere with `dotenvx run -- yourcommand`
+      at model.Document.invalidate (node_modules/mongoose/lib/document.js:3362:32)
+      at node_modules/mongoose/lib/document.js:3123:17
+      at node_modules/mongoose/lib/schemaType.js:1420:9
 
-      at _log (node_modules/dotenv/lib/main.js:142:11)
+  ● Non-admin should not restock
 
-  console.log
-    [dotenv@17.2.3] injecting env (0) from .env.test -- tip: ⚙️  load multiple .env files with { path: ['.env.local', '.env'] }
+    ValidationError: User validation failed: password: Path `password` is required., username: Path `username` is required.
 
-      at _log (node_modules/dotenv/lib/main.js:142:11)
+      at model.Document.invalidate (node_modules/mongoose/lib/document.js:3362:32)
+      at node_modules/mongoose/lib/document.js:3123:17
+      at node_modules/mongoose/lib/schemaType.js:1420:9
 
-  console.log
-    [dotenv@17.2.3] injecting env (4) from .env -- tip: 🔐 prevent building .env in docker: https://dotenvx.com/prebuild
+FAIL src/tests/sweetUpdate.test.js
+  ✕ Update sweet details using PUT /api/sweets/:id (110 ms)
 
-      at _log (node_modules/dotenv/lib/main.js:142:11)
+  ● Update sweet details using PUT /api/sweets/:id
 
-  console.log
-    [dotenv@17.2.3] injecting env (0) from .env.test -- tip: 🔄 add secrets lifecycle management: https://dotenvx.com/ops
+    expect(received).toBe(expected) // Object.is equality
 
-      at _log (node_modules/dotenv/lib/main.js:142:11)
+    Expected: 200
+    Received: 401
 
-  console.log
-    [dotenv@17.2.3] injecting env (4) from .env -- tip: 👥 sync secrets across teammates & machines: https://dotenvx.com/ops
+      33 |   });
+      34 |
+    > 35 |   expect(res.statusCode).toBe(200);
+         |                          ^
+      36 |   expect(res.body.price).toBe(150);
+      37 |   expect(res.body.quantity).toBe(40);
+      38 | });
 
-      at _log (node_modules/dotenv/lib/main.js:142:11)
+      at Object.toBe (src/tests/sweetUpdate.test.js:35:26)
 
-  console.log
-    [dotenv@17.2.3] injecting env (0) from .env.test -- tip: ⚙️  write to custom object with { processEnv: myObject }
+PASS src/tests/sweetSearch.test.js
+  Search Sweets API
+    ✓ Search by name (141 ms)
+    ✓ Search by category (81 ms)
+    ✓ Search by price range (80 ms)
+    ✓ Search by name + category + price (79 ms)
 
-      at _log (node_modules/dotenv/lib/main.js:142:11)
+PASS src/tests/sweetPurchase.test.js
+  ✓ purchase sweet should decrease quantity by 1 (256 ms)
+  ✓ should return 400 if sweet is out of stock (181 ms)
 
-  console.log
-    [dotenv@17.2.3] injecting env (4) from .env -- tip: 🛠️  run anywhere with `dotenvx run -- yourcommand`
+PASS src/tests/auth.test.js
+  ✓ POST /register → should register a user successfully (1485 ms)
+  ✓ POST /register → should fail if user already exists (223 ms)
+  ✓ POST /login → should login user successfully (222 ms)
+  ✓ POST /login → should fail on invalid credentials (153 ms)
 
-      at _log (node_modules/dotenv/lib/main.js:142:11)
+PASS src/tests/sweet.test.js
+  ✓ Admin can create a new sweet (78 ms)
 
-  console.log
-    [dotenv@17.2.3] injecting env (0) from .env.test -- tip: ⚙️  load multiple .env files with { path: ['.env.local', '.env'] }
+PASS src/tests/sweetList.test.js
+  ✓ GET /api/sweets should list all sweets (787 ms)
 
-      at _log (node_modules/dotenv/lib/main.js:142:11)
+PASS src/tests/sweetDelete.test.js
+  ✓ Admin should delete a sweet successfully (886 ms)
+  ✓ Non-admin user should NOT delete a sweet (86 ms)
 
-  console.log
-    [dotenv@17.2.3] injecting env (4) from .env -- tip: ⚙️  write to custom object with { processEnv: myObject }
+PASS src/tests/authMiddleware.test.js
+  ✓ Should block access when no token is provided (11 ms)
+  ✓ Should allow access when a valid token is provided (9 ms)
 
-      at _log (node_modules/dotenv/lib/main.js:142:11)
+PASS src/tests/db.test.js
+  ✓ Database should connect successfully (963 ms)
 
-  console.log
-    [dotenv@17.2.3] injecting env (0) from .env.test -- tip: 🔐 encrypt with Dotenvx: https://dotenvx.com
-
-      at _log (node_modules/dotenv/lib/main.js:142:11)
-
-  console.log
-    [dotenv@17.2.3] injecting env (4) from .env -- tip: 🗂️ backup and recover secrets: https://dotenvx.com/ops
-
-      at _log (node_modules/dotenv/lib/main.js:142:11)
-
-  console.log
-    [dotenv@17.2.3] injecting env (0) from .env.test -- tip: 🗂️ backup and recover secrets: https://dotenvx.com/ops
-
-      at _log (node_modules/dotenv/lib/main.js:142:11)
-
-  console.log
-    [dotenv@17.2.3] injecting env (4) from .env -- tip: 🔑 add access controls to secrets: https://dotenvx.com/ops
-
-      at _log (node_modules/dotenv/lib/main.js:142:11)
-
-  console.log
-    [dotenv@17.2.3] injecting env (0) from .env.test -- tip: 🔐 prevent committing .env to code: https://dotenvx.com/precommit
-
-      at _log (node_modules/dotenv/lib/main.js:142:11)
-
-  console.log
-    [dotenv@17.2.3] injecting env (4) from .env -- tip: ⚙️  enable debug logging with { debug: true }
-
-      at _log (node_modules/dotenv/lib/main.js:142:11)
-
-  console.log
-    [dotenv@17.2.3] injecting env (0) from .env.test -- tip: ⚙️  override existing env vars with { override: true }
-
-      at _log (node_modules/dotenv/lib/main.js:142:11)
-
-  console.log
-    [dotenv@17.2.3] injecting env (4) from .env -- tip: 👥 sync secrets across teammates & machines: https://dotenvx.com/ops
-
-      at _log (node_modules/dotenv/lib/main.js:142:11)
-
-  console.log
-    [dotenv@17.2.3] injecting env (0) from .env.test -- tip: 🗂️ backup and recover secrets: https://dotenvx.com/ops
-
-      at _log (node_modules/dotenv/lib/main.js:142:11)
-
-  console.log
-    [dotenv@17.2.3] injecting env (4) from .env -- tip: 🔑 add access controls to secrets: https://dotenvx.com/ops
-
-      at _log (node_modules/dotenv/lib/main.js:142:11)
-
+Test Suites: 2 failed, 8 passed, 10 total
+Tests:       3 failed, 17 passed, 20 total
+Snapshots:   0 total
+Time:        23.547 s, estimated 33 s
+Ran all test suites.
+Deepakkumar@MacBookAir backend % 
