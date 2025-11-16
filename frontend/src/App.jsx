@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { AuthProvider, useAuth } from "./src/context/AuthContext";
-import Login from "./src/pages/Login";
-import Home from "./src/pages/Home";
-import AdminDashboard from "./src/pages/AdminDashboard";
+import { AuthProvider, useAuth } from "./context/AuthContext";
+import Login from "./pages/Login";
+import Home from "./pages/Home";
+import AdminDashboard from "./pages/AdminDashboard";
 
 function AppContent() {
   const { user, loading } = useAuth();
