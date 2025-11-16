@@ -319,7 +319,7 @@ Here are the specific ways AI was used:
 
 ---
 
-### **📌 Reflection: How AI Impacted My Workflow**
+### ** Reflection: How AI Impacted My Workflow**
 
 Using AI significantly improved my development workflow:
 
@@ -345,22 +345,22 @@ AI acted as a supportive tool, not an auto-builder.**
 
 ---
 
-## ✅ Test Report (Summary)
+## Test Report (Summary)
 
  **Jest + Supertest**.
 
 | Category                        | Tests   | Status   |
 | ------------------------------- | ------- | -------- |
-| Authentication (Register/Login) | 4 tests | ✅ Passed |
-| Sweets Search API               | 4 tests | ✅ Passed |
-| Sweet Purchase API              | 2 tests | ✅ Passed |
-| Sweet CRUD (Create/List/Delete) | 4 tests | ✅ Passed |
-| Auth Middleware                 | 2 tests | ✅ Passed |
-| Database Connectivity           | 1 test  | ✅ Passed |
-| Restock API                     | 2 tests | ❌ Failed |
-| Update Sweet API                | 1 test  | ❌ Failed |
+| Authentication (Register/Login) | 4 tests |  Passed |
+| Sweets Search API               | 4 tests |  Passed |
+| Sweet Purchase API              | 2 tests |  Passed |
+| Sweet CRUD (Create/List/Delete) | 4 tests |  Passed |
+| Auth Middleware                 | 2 tests |  Passed |
+| Database Connectivity           | 1 test  |  Passed |
+| Restock API                     | 2 tests |  Failed |
+| Update Sweet API                | 1 test  |  Failed |
 
-### ❗ Failed Tests
+###  Failed Tests
 
 * **Restock Sweet API**
 
@@ -369,7 +369,7 @@ AI acted as a supportive tool, not an auto-builder.**
 
   * Unauthorized access (401) instead of expected 200.
 
-### 📝 Test Command
+###  Test Command
 
 You can run the test suite using:
 
